@@ -487,6 +487,12 @@ the following key bindings in bash, zsh, and fish.
       ```
     - Can be disabled by setting `FZF_ALT_C_COMMAND` to an empty string when
       sourcing the script
+    - Set `FZF_ALT_C_CD_COMMAND` to change the `cd` action
+        - Defaults to `builtin cd -- %q` (where `%q` is the selected directory)
+        - For example, change to use `pushd`:
+      ```sh
+      export FZF_ALT_C_CD_COMMAND="builtin pushd -- %q > /dev/null"
+      ```
 
 Display modes for these bindings can be separately configured via
 `FZF_{CTRL_T,CTRL_R,ALT_C}_OPTS` or globally via `FZF_DEFAULT_OPTS`.

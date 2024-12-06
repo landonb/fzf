@@ -90,6 +90,7 @@ fzf-cd-widget() {
     return 0
   fi
   zle push-line # Clear buffer. Auto-restored on next prompt.
+  # FIXME: Impl. FZF_ALT_C_CD_COMMAND alt. action.
   BUFFER="builtin cd -- ${(q)dir:a}"
   zle accept-line
   local ret=$?

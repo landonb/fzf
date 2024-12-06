@@ -102,6 +102,7 @@ function fzf_key_bindings
       eval (__fzfcmd) +m --query=$fzf_query | read -l result
 
       if test -n "$result"
+        # FIXME: Impl. FZF_ALT_C_CD_COMMAND alt. action.
         cd -- $result
 
         # Remove last token from commandline.

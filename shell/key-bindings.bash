@@ -51,7 +51,7 @@ __fzf_cd__() {
     FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} \
     FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=dir,follow,hidden --scheme=path" "${FZF_ALT_C_OPTS-} +m") \
     FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd)
-  ) && printf 'builtin cd -- %q' "$(builtin unset CDPATH && builtin cd -- "$dir" && builtin pwd)"
+  ) && printf "${FZF_ALT_C_CD_COMMAND:-builtin cd -- %q}" "$(builtin unset CDPATH && builtin cd -- "$dir" && builtin pwd)"
 }
 
 if command -v perl > /dev/null; then
