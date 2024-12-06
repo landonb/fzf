@@ -1,3 +1,11 @@
+Fork of [`junegunn/fzf`](https://github.com/junegunn/fzf) that adds a
+single environment variable option, `FZF_ALT_C_CD_COMMAND`, so you
+can change the `cd` command to, e.g., `pushd`
+
+- Read more below: [See `FZF_ALT_C_CD_COMMAND` under Key bindings for command-line](#key-bindings-for-command-line)
+
+*The original README follows:*
+
 <div align="center">
 <sup>Special thanks to:</sup>
 <br>
