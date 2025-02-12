@@ -105,6 +105,8 @@ fi
 
 # Required to refresh the prompt after fzf
 bind -m emacs-standard '"\er": redraw-current-line'
+# macOS literal <Option-R>
+bind -m emacs-standard '"®": redraw-current-line'
 
 bind -m vi-command '"\C-z": emacs-editing-mode'
 bind -m vi-insert '"\C-z": emacs-editing-mode'
@@ -138,9 +140,17 @@ fi
 
 # ALT-C - cd into the selected directory
 if [[ "${FZF_ALT_C_COMMAND-x}" != "" ]]; then
-  bind -m emacs-standard '"\ec": " \C-b\C-k \C-u`__fzf_cd__`\e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
-  bind -m vi-command '"\ec": "\C-z\ec\C-z"'
-  bind -m vi-insert '"\ec": "\C-z\ec\C-z"'
+  _bind_alt_c () {
+    local seq
+    # <Alt-C> and macOS literal <Option-C>
+    for seq in '"\ec"' '"ç"'; do
+      bind -m emacs-standard ${seq}': " \C-b\C-k \C-u`__fzf_cd__`\e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
+      bind -m vi-command ${seq}': "\C-z\ec\C-z"'
+      bind -m vi-insert ${seq}': "\C-z\ec\C-z"'
+    done
+  }
+  _bind_alt_c
+  unset -f _bind_alt_c
 fi
 
 fi
